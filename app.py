@@ -28,6 +28,9 @@ game_start_prompt = """\
 You wake up in an empty conference room with no windows. You look behind you and see a door with a person standing in front of it. They are holding a key. What do you do? \
 """
 
+st.set_page_config(page_title="LLM Escape Room", page_icon="🔑")
+st.title("Break the rules to escape!", anchor=False)
+
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container, initial_text=""):
         self.container = container
@@ -40,6 +43,7 @@ class StreamHandler(BaseCallbackHandler):
 
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", type="password")
+
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
